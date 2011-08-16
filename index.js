@@ -1,6 +1,6 @@
 var url = require('url');
 
-module.exports.createClient = function(redis_url) {
+module.exports.createClient = module.exports.connect = function(redis_url) {
   var parsed_url  = url.parse(redis_url || process.env.REDIS_URL || 'redis://localhost:6379');
   var parsed_auth = (parsed_url.auth || '').split(':');
 
