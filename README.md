@@ -2,7 +2,7 @@
 
 ## Usage
 
-    // use $REDIS_URL or http://localhost:6379
+    // use $REDIS_URL or redis://localhost:6379
     var redis = require('redis-url').createClient();
 
     // specify a url
