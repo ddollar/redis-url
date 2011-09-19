@@ -1,6 +1,6 @@
 {
   "name": "redis-url",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Use a REDIS_URL to connect to Redis",
   "author": "David Dollar <ddollar@gmail.com>",
   "main": "./index.js",
