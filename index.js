@@ -4,7 +4,9 @@ module.exports.createClient = module.exports.connect = function(redis_url) {
   var password, database;
   var parsed_url  = url.parse(redis_url || process.env.REDIS_URL || 'redis://localhost:6379');
   var parsed_auth = (parsed_url.auth || '').split(':');
-
+  
+  var database = parsed_auth.shift();
+  var password = parsed_auth.join(':');
   var redis = require('redis').createClient(parsed_url.port, parsed_url.hostname);
 
   if (password = parsed_auth[1]) {
