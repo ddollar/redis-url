@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Use a REDIS_URL to connect to Redis",
   "author": "David Dollar <ddollar@gmail.com>",
+  "repository": "https://github.com/ddollar/redis-url",
   "main": "./index.js",
   "dependencies": { "redis": ">= 0.0.1" }
 }
