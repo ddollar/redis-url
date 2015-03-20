@@ -8,5 +8,13 @@
     "url": "https://github.com/ddollar/redis-url.git"
   },
   "main": "./index.js",
-  "dependencies": { "redis": ">= 0.0.1" }
+  "dependencies": {
+    "redis": ">= 0.0.1"
+  },
+  "devDependencies": {
+    "tape": "^3.5.0"
+  },
+  "scripts": {
+    "test": "tape test"
+  }
 }
