@@ -1,6 +1,6 @@
 {
   "name": "redis-url",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "Connect to redis using a fully-qualified URL",
   "author": "David Dollar <ddollar@gmail.com>",
   "repository": {
@@ -8,5 +8,13 @@
     "url": "https://github.com/ddollar/redis-url.git"
   },
   "main": "./index.js",
-  "dependencies": { "redis": ">= 0.0.1" }
+  "dependencies": {
+    "redis": ">= 0.0.1"
+  },
+  "devDependencies": {
+    "tape": "^3.5.0"
+  },
+  "scripts": {
+    "test": "tape test"
+  }
 }
