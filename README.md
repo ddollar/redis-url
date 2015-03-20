@@ -20,6 +20,14 @@ redis://[:password@]host:port[/db-number][?option=value]
 
 **db-number** is integer from 1 to 15
 
+## Test
+
+```
+redis-server&
+npm install
+npm test
+```
+
 ## License
 
 MIT
