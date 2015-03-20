@@ -1,9 +1,9 @@
 {
   "name": "redis-url",
   "version": "0.3.1",
-  "description": "Use a REDIS_URL to connect to Redis",
+  "description": "Connect to redis using a fully-qualified URL",
   "author": "David Dollar <ddollar@gmail.com>",
-  "repository": { 
+  "repository": {
     "type": "git",
     "url": "https://github.com/ddollar/redis-url.git"
   },

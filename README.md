@@ -1,16 +1,23 @@
 # redis-url
 
+Connect to redis using a fully-qualified URL
+
 ## Usage
 
-    // use $REDIS_URL or redis://localhost:6379
-    var redis = require('redis-url').connect();
+```js
+// use $REDIS_URL or redis://localhost:6379
+var redis = require('redis-url').connect();
 
-    // specify a url
-    var redis = require('redis-url').connect(process.env.SOMEREDIS_URL);
+// specify a url
+var redis = require('redis-url').connect(process.env.SOMEREDIS_URL);
+```
 
-## Url format
+## URL format
 
-    redis://[:password]@]host:port[/db-number][?option=value]
+```
+redis://[:password@]host:port[/db-number][?option=value]
+```
+
 **db-number** is integer from 1 to 15
 
 ## License
