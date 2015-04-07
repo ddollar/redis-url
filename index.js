@@ -23,7 +23,20 @@ module.exports.createClient = module.exports.connect = function(redis_url) {
 }
 
 var parse = module.exports.parse = function(url) {
-  var parsed = URL.parse(url, true)
+  var parsed = URL.parse(url, true, true)
+
+  if (!parsed.slashes && url[0] !== '/') {
+    // We require slashes after protocol name, e.g. "redis://whatever:1234"
+    // is correct, but "redis:whatever:1234" is not.
+    //
+    // Therefore, if parser see no slashes, we can assume that protocol is
+    // omitted (e.g. "whatever:1234")
+    //
+    // Just add slashes in this case and try again.
+    url = '//' + url
+    parsed = URL.parse(url, true, true)
+  }
+
   parsed.password = (parsed.auth || '').split(':')[1];
   parsed.path = (parsed.pathname || '/').slice(1);
   parsed.database = parsed.path.length ? parsed.path : '0';
