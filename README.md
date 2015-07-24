@@ -44,10 +44,12 @@ require("redis-url").parse('redis://:secrets@example.com:1234/9?foo=bar&baz=qux'
 ## URL format
 
 ```
-redis://[:password@]host:port[/db-number][?option=value]
+redis://[:password@]host[:port][/db-number][?option=value]
 ```
 
-**db-number** is an integer from 1 to 15
+**db-number** is a non-negative decimal integer
+
+See [the IANA registration](http://www.iana.org/assignments/uri-schemes/prov/redis) for more details.
 
 ## Test
 
