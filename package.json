@@ -1,6 +1,6 @@
 {
   "name": "redis-url",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Connect to redis using a fully-qualified URL",
   "author": "David Dollar <ddollar@gmail.com>",
   "repository": {
