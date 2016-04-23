@@ -12,6 +12,7 @@
     "redis": ">= 0.0.1"
   },
   "devDependencies": {
+    "fakeredis": "^0.3.3",
     "tape": "^3.5.0"
   },
   "scripts": {

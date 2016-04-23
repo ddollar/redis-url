@@ -1,7 +1,7 @@
 var test = require("tape")
 
 test("redis-url", function (t) {
-  t.plan(30)
+  t.plan(32)
 
   // Parse a simple URL
   var parts = require('..').parse('redis://localhost:6379')
@@ -59,6 +59,22 @@ test("redis-url", function (t) {
     if (err) throw errr
     t.equal(res, 'bar', "food should equal bar")
     redis2.quit()
+  })
+
+  // Connect to specified URL with a custom redis module
+  var redis3 = require('..').createClient('redis://localhost:6379', require('fakeredis'))
+  redis3.set('baz', 'qux')
+  redis3.get('baz', function(err, res) {
+    if (err) throw err
+    t.equal(res, 'qux', "baz should equal qux")
+
+    // if fake redis is being used it won't have the key "food"
+    // set in the previous test
+    redis3.get('food', function(err, res) {
+      if (err) throw err
+      t.notEqual(res, 'bar', "food should not equal bar")
+      redis3.quit()
+    })
   })
 
 })
