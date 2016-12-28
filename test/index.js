@@ -1,7 +1,7 @@
 var test = require("tape")
 
 test("redis-url", function (t) {
-  t.plan(32)
+  t.plan(46)
 
   // Parse a simple URL
   var parts = require('..').parse('redis://localhost:6379')
@@ -22,6 +22,26 @@ test("redis-url", function (t) {
   t.equal(parts.path, '9')
   t.equal(parts.database, '9')
   t.deepEqual(parts.query, {foo: 'bar', baz: 'qux'})
+
+  // Parse a more complex URL (nested objects)
+  parts = require('..').parse('redis://:secrets@example.com:1234/9?foo[abc]=bar&baz=qux')
+  t.equal(parts.password, 'secrets')
+  t.equal(parts.host, 'example.com:1234')
+  t.equal(parts.hostname, 'example.com')
+  t.equal(parts.port, '1234')
+  t.equal(parts.path, '9')
+  t.equal(parts.database, '9')
+  t.deepEqual(parts.query, {foo: {abc: 'bar'}, baz: 'qux'})
+
+  // Parse a more complex URL (nested objects - dotted natation)
+  parts = require('..').parse('redis://:secrets@example.com:1234/9?foo.abc=bar&baz=qux')
+  t.equal(parts.password, 'secrets')
+  t.equal(parts.host, 'example.com:1234')
+  t.equal(parts.hostname, 'example.com')
+  t.equal(parts.port, '1234')
+  t.equal(parts.path, '9')
+  t.equal(parts.database, '9')
+  t.deepEqual(parts.query, {foo: {abc: 'bar'}, baz: 'qux'})
 
   // Simple url, no protocol submitted
   parts = require('..').parse('localhost:6379')
