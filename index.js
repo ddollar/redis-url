@@ -1,4 +1,5 @@
 var URL = require('url');
+var qs = require('qs');
 
 module.exports.createClient = module.exports.connect = function(redis_url, redis_module) {
   var parsed = parse(redis_url || process.env.REDIS_URL || 'redis://localhost:6379')
@@ -23,7 +24,7 @@ module.exports.createClient = module.exports.connect = function(redis_url, redis
 }
 
 var parse = module.exports.parse = function(url) {
-  var parsed = URL.parse(url, true, true)
+  var parsed = URL.parse(url, false, true)
 
   if (!parsed.slashes && url[0] !== '/') {
     // We require slashes after protocol name, e.g. "redis://whatever:1234"
@@ -34,8 +35,10 @@ var parse = module.exports.parse = function(url) {
     //
     // Just add slashes in this case and try again.
     url = '//' + url
-    parsed = URL.parse(url, true, true)
+    parsed = URL.parse(url, false, true)
   }
+
+  parsed.query = qs.parse(parsed.query, { allowDots: true });
 
   parsed.password = (parsed.auth || '').split(':')[1];
   parsed.path = (parsed.pathname || '/').slice(1);

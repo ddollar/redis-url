@@ -9,6 +9,7 @@
   },
   "main": "./index.js",
   "dependencies": {
+    "qs": ">= 0.0.1",
     "redis": ">= 0.0.1"
   },
   "devDependencies": {
