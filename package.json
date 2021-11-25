@@ -10,7 +10,7 @@
   "main": "./index.js",
   "dependencies": {
     "qs": ">= 0.0.1",
-    "redis": ">= 0.0.1"
+    "redis": ">=0.0.1 <4.0.0"
   },
   "devDependencies": {
     "fakeredis": "^0.3.3",
